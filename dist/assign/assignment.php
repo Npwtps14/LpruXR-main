@@ -1,9 +1,7 @@
 <?php
- 
 
 
-
- if (isset($_POST['saveassign'] )) {
+  if (isset($_POST['saveassign'] )) {
  
   $row = $getdata->my_sql_num_row($connect,"assignment","`topic`='".$_POST['topic']."' AND `register_id`='".$_POST['s_group']."' ");
 
@@ -14,9 +12,13 @@
   ,`description`='".$_POST['desc']."'
   ,`deadline`='".$_POST['deadline']."' 
   " ); 
+  }else{
+    echo "<script>";
+    echo "alert(' ข้อมูลซ้ำ  !');";
+    echo "window.history.back();";
+    echo "</script>";
   }
 }
-
 ?>
 
 <section class="section has-background-grey-light">
@@ -27,6 +29,7 @@
           <table id="assign_data" class="table is-fullwidth is-scrollable  is-bordered is-striped   ">
             <thead>
               <tr>
+                <th>ID</th>
                 <th>Term</th>
                 <th>Subject</th>
                 <th>Group</th>
@@ -41,7 +44,6 @@
       </div>
     </div>
   </div>
-
 </section>
 <div class="modal fade" id="assignModal" tabindex="-1" aria-labelledby="exampleModalLabel" role="dialog" data-backdrop="false">
   <div class="modal-dialog">
@@ -124,7 +126,7 @@
 </div>
 
 
-<script>
+<script type="text/javascript" language="javascript">
   (function() {
 
     var term = document.getElementById("term");
@@ -207,24 +209,31 @@
   }
 });
 
-// $('#assign_data').on('draw.dt', function(){
-//  $('#assign_data').Tabledit({
-//   url:'dist/admin/action_subject.php',
-//   dataType:'json',
-//   columns:{
-//    identifier : [0, 'id'],
-//    editable:[[1, 'subject_id'], [2, 'subject_name'], [3, 'credit']]
-//   },
-//   restoreButton:false,
-//   onSuccess:function(data, textStatus, jqXHR)
-//   {
-//    if(data.action == 'delete')
-//    {
-//     $('#' + data.id).remove();
-//     $('#assign_data').DataTable().ajax.reload();
-//    }
-//   }
-//  });
-// });
+$('#assign_data').on('draw.dt', function(){
+ $('#assign_data').Tabledit({
+  url:'dist/assign/action_assignment.php',
+  dataType:'json',
+  columns:{
+   identifier : [0, 'id'],
+   editable:[
+     [1, 'term'],
+     [2, 'subject_name'], 
+     [3, 's_group'],
+     [4, 'topic'], 
+     [5, 'description'],
+     [6, 'deadline'] ]
+  },
+  restoreButton:false,
+  onSuccess:function(data, textStatus, jqXHR)
+  {
+   if(data.action == 'delete')
+   {
+    // url:'dist/assign/action_assignment.php',
+    $('#' + data.id).remove();
+    $('#assign_data').DataTable().ajax.reload();
+   }
+  }
+ });
+});
  
 </script>
