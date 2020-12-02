@@ -17,7 +17,7 @@ session_start();
                       $_SESSION["user_id"] = $row["ID"];
                       $_SESSION["Username"] = $row["Username"];
                       $_SESSION["Userlevel"] = $row["Userlevel"];
-                      
+                      $_SESSION["Fullname"] = $row["Fullname"];
                       
 
                       if($_SESSION["Userlevel"]=="Admin"){ //ถ้าเป็น admin ให้กระโดดไปหน้า admin.php
@@ -29,6 +29,7 @@ session_start();
                       if ($_SESSION["Userlevel"]=="Teacher"){  //ถ้าเป็น member ให้กระโดดไปหน้า assignment.php
 
                         Header("Location: ../../");
+                       echo $_SESSION["Fullname"] = $row["Fullname"];
 
                       }
 

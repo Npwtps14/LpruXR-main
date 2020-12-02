@@ -69,7 +69,6 @@ foreach($result as $row)
  $sub_array[] = $row['subject_name'];
  $sub_array[] = $row['s_group'];
  $sub_array[] = $row['topic'];
- $sub_array[] = $row['description'];
  $sub_array[] = $row['deadline'];
  $data[] = $sub_array;
 }

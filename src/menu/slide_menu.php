@@ -13,6 +13,12 @@
                 <span class="menu-item-label">ติดตามงาน</span>
               </a>
             </li>
+            <li>
+              <a href="?page=allAssign" class="has-icon">
+                <span class="icon"><i class="mdi mdi-desktop-mac"></i></span>
+                <span class="menu-item-label">สติรายงานการมอบหมาย</span>
+              </a>
+            </li>
           </ul>
   <?php if(@$users->Userlevel === "Admin"){ ?>
 <p class="menu-label">Management</p>
@@ -65,10 +71,15 @@
 
           </ul>
           <?php } ?>
-
             <ul style="bottom: 30%;position:fixed;left:65px;">
               <li class="is-fixed-bottom">
-              <?php if(isset($users->Userlevel)){?>
+
+
+              
+               
+              
+    
+              <?php if(isset($users->Userlevel)){?>                                        
                 <a href="dist/logout.php" class="has-icon">
                   <center><button class="button is-danger is-rounded">Logout</button></center>
                 </a>

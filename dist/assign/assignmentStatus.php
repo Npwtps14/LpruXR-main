@@ -1,17 +1,16 @@
 <?php
 // session_start(); //assignStatusModal
 ?>
-<section class="section  has-background-grey-light ">
-  <table class="table table-hover">
+<section class="section has-background-light ">
+  <table width="100%" class="table table-hover">
     <thead>
-      <tr>
-        <th scope="col">#</th>
-        <th scope="col">Topic</th>
-        <th scope="col">Subject</th>
-        <th scope="col">Group</th>
-        <th scope="col">student</th>
-        <th scope="col">Assign</th>
-        <th scope="col"></th>
+      <th class=" has-background-grey-light" scope="col">#</th>
+                <th class=" has-background-grey-light" scope="col">Topic</th>
+                <th class=" has-background-grey-light" scope="col">Subject</th>
+                <th class=" has-background-grey-light" scope="col">Group</th>
+                <th class=" has-background-grey-light" scope="col">Student</th>
+                <th class=" has-background-grey-light" scope="col">Complete</th>
+                <th class=" has-background-grey-light" scope="col"></th>
       </tr>
     </thead>
     <tbody>
@@ -21,35 +20,61 @@
 
       ?>
         <tr>
-          <th scope="row"><?php echo $rowstatus->id; ?></th>
-          <td><?php echo $rowstatus->topic; ?></td>
-          <td><?php echo $rowstatus->subject_name; ?></td>
-          <td><?php echo $rowstatus->s_group; ?></td>
-          <td><?php echo $rowstatus->sum_st; ?></td>
-          <td><?php echo $rowstatus->sum_as; ?></td>
-          <td scope="row" align="center" valign="middle">
-            <button type="button" class="btn btn-outline-success btn-sm" onClick=" javascript:ToggleStudent('<?php echo @$rowstatus->id; ?>');"><i class="fa fa-check"></i> ส่งงาน</button>
+                    <th class=" has-text-dark has-background-primary" scope="row"><?php echo $rowstatus->id; ?></th>
+                    <td class=" has-text-dark has-background-primary"><?php echo $rowstatus->topic; ?></td>
+                    <td class=" has-text-dark has-background-primary"><?php echo $rowstatus->subject_name; ?></td>
+                    <td class=" has-text-dark has-background-primary"><?php echo $rowstatus->s_group; ?></td>
+                    <td class=" has-text-dark has-background-primary"><?php echo $rowstatus->sum_st; ?></td>
+                    <td class=" has-text-dark has-background-primary"><?php echo $rowstatus->sum_as; ?></td>
+          <td scope="row" valign="middle">
+            <button type="button" class="button is-success" onClick=" javascript:ToggleStudent('<?php echo @$rowstatus->id; ?>');">
+              <i class="fa fa-bars"></i>&nbsp;การส่งงาน
+            </button>
           </td>
         </tr>
-        <tr id="hidden<?php echo $rowstatus->id; ?>" style="display:hidden;">
-          <td colspan="7" valign="middle">
-            <table width="100%">
+        <tr  >
+          <td colspan="7" valign="middle" >
+          <div class="card has-background-grey-lighter">
+                            <div class="card-content">
+                                <p class="label border level-left ">
+                                Description
+                                </p>
+                                <p class="subtitle level-left">
+                                <?php echo  $rowstatus->description;   ?>
+                    
+                                </p>
+                            </div>
+                        </div>
+                        <div class=" has-background-grey-dark">
+                            <p class=" has-text-grey-dark">.</p>
+                        </div>
+
+            <table width="100%" id="hidden<?php echo $rowstatus->id; ?>" style="display: none;" >
               <tbody>
                 <?php
                 $student = $getdata->my_sql_select($connect, null, "student", "s_group='" . $rowstatus->s_group . "' AND `status`='exist' ");
                 while ($rowStudent = mysqli_fetch_object($student)) {
-                  $checkStatus =  $getdata->my_sql_query($connect,null,"tracking","student_id='".$rowStudent->student_id."' AND assign_id='".$rowstatus->id."' ");
+                  $checkStatus =  $getdata->my_sql_query($connect, null, "tracking", "student_id='" . $rowStudent->student_id . "' AND assign_id='" . $rowstatus->id . "' ");
                 ?>
                   <tr>
                     <td width="10%"><?php echo $rowStudent->student_id; ?></td>
-                    <td width="80%"><?php echo $rowStudent->student_name; ?></td>
+                    <td width="70%"><?php echo $rowStudent->student_name; ?></td>
+                    <td width="10%" id="td-<?php echo $rowStudent->student_id.'-'.$rowstatus->id;?>">
+                      <?php if (@$checkStatus->id != "") {
+                        echo "ส่งแล้ว";
+                      }else{
+                        echo "ยังไม่ส่ง";
+                      }
+                      ?>
+                    </td>
                     <td width="10%">
                       <?php
-                        if(@$checkStatus->id !=""){
-		                      echo '<button type="button" class="btn btn-outline-success btn-sm" id="btn-'.@$checkStatus->id.'" onClick="javascript:changeStatusTracking(\''.@$checkStatus->id.'\');"><i class="fa fa-check" aria-hidden="true" id="icon-'.@$checkStatus->id.'"></i> <span id="text-'.@$checkStatus->id.'">ส่งแล้ว</span></button>';
-	                     }else{
-		                      echo '<button type="button" class="btn btn-outline-danger btn-sm" id="btn-'.@$checkStatus->id.'" onClick="javascript:changeStatusTracking(\''.@$checkStatus->id.'\');"><i class="fa fa-times-circle-o" aria-hidden="true" id="icon-'.@$checkStatus->id.'"></i> <span id="text-'.@$checkStatus->id.'">ไม่ส่ง</span></button>';
-	                      }
+                      
+                      if ( @$checkStatus->id != "") {
+                        echo '<button type="button" class="button is-danger" id="btn-' . $rowStudent->student_id.'-'.$rowstatus->id . '" onClick="javascript:changeStatusTracking(\'' . $rowStudent->student_id.'-'.$rowstatus->id . '\');"><i class="fa fa-times-circle-o" aria-hidden="true" id="icon-' . $rowStudent->student_id.'-'.$rowstatus->id . '"></i> <span id="text-' . $rowStudent->student_id.'-'.$rowstatus->id . '">ยกเลิกส่งงาน</span></button>';
+                      } else {
+                        echo '<button type="button" class="button is-success" id="btn-' .$rowStudent->student_id.'-'.$rowstatus->id . '" onClick="javascript:changeStatusTracking(\'' . $rowStudent->student_id.'-'.$rowstatus->id . '\');"><i class="fa fa-check" aria-hidden="true" id="icon-' . $rowStudent->student_id.'-'.$rowstatus->id . '"></i> <span id="text-' . $rowStudent->student_id.'-'.$rowstatus->id . '">คลิกส่งงาน</span></button>';
+                      }
                       ?>
                     </td>
                   </tr>
@@ -63,7 +88,8 @@
     <tbody>
   </table>
 </section>
-<div class="modal fade" id="assignStatusModal" tabindex="-1" aria-labelledby="exampleModalLabel" role="dialog" data-backdrop="false">
+
+<!-- <div class="modal fade" id="assignStatusModal" tabindex="-1" aria-labelledby="exampleModalLabel" role="dialog" data-backdrop="false">
   <div class="modal-dialog">
     <div class="modal-content">
       <form method="post" enctype="multipart/form-data" name="form1" id="form1">
@@ -135,16 +161,7 @@
       </form>
     </div>
   </div>
-</div>
-
-<?php
-//   if(isset($_POST['searchstatus'])){
-//     $resultassign = $getdata->my_sql_select($connect,"assignment") 
-//   }
-
-
-
-?>
+</div> -->
 
 <script>
   (function() {
@@ -226,39 +243,49 @@
 
 
   });
-
 </script>
 
 <script language="javascript">
-    function changeStatusTracking(unitkey){
-    	if (window.XMLHttpRequest){// code for IE7+, Firefox, Chrome, Opera, Safari
-    	 	xmlhttp=new XMLHttpRequest();
-    	}else{// code for IE6, IE5
-      		xmlhttp=new ActiveXObject("Microsoft.XMLHTTP");
-    	}
-      var es = document.getElementById('btn-'+unitkey);
-      
-    	if(es.className == 'btn btn-outline-success btn-sm'){
-    		var sts= 'yes';
-    	}else{
-    		var sts= 'no';
-    	}
-    	xmlhttp.onreadystatechange=function(){
-      		if (xmlhttp.readyState==4 && xmlhttp.status==200){
-    			  if(es.className == 'btn btn-outline-success btn-sm'){
-    			  	document.getElementById('btn-'+unitkey).className = 'btn btn-outline-danger btn-sm';
-    			  	document.getElementById('icon-'+unitkey).className = 'fa fa-times';
-    			  	document.getElementById('text-'+unitkey).innerHTML = 'ไม่สอน';
-    			  }else{
-    			  	document.getElementById('btn-'+unitkey).className = 'btn btn-outline-success btn-sm';
-    			  	document.getElementById('icon-'+unitkey).className = 'fa fa-check';
-    			  	document.getElementById('text-'+unitkey).innerHTML = 'สอน';
-    			  }
-      		}
-    	}
+  function changeStatusTracking(unitkey) {
+    if (window.XMLHttpRequest) { // code for IE7+, Firefox, Chrome, Opera, Safari
+      xmlhttp = new XMLHttpRequest();
+    } else { // code for IE6, IE5
+      xmlhttp = new ActiveXObject("Microsoft.XMLHTTP");
+    }
+    var es = document.getElementById('btn-' + unitkey);
 
-    	xmlhttp.open("GET","functions.php?type=change_tracking_status&key="+unitkey+"&sts="+sts,true);
-    	xmlhttp.send();
+    if (es.className == 'button is-success') {
+      var sts = 'yes';
+    } else {
+      var sts = 'no';
     }
 
-  </script>
+    xmlhttp.onreadystatechange = function() {
+      if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
+        if (es.className == 'button is-success') {
+          document.getElementById('btn-' + unitkey).className = 'button is-danger';
+          document.getElementById('icon-' + unitkey).className = 'fa fa-times-circle-o';
+          document.getElementById('text-' + unitkey).innerHTML = 'ยกเลิกส่งงาน';
+          document.getElementById('td-' + unitkey).innerHTML = 'ส่งแล้ว';
+        } else {
+          document.getElementById('btn-' + unitkey).className = 'button is-success';
+          document.getElementById('icon-' + unitkey).className = 'fa fa-check';
+          document.getElementById('text-' + unitkey).innerHTML = 'คลิกส่งงาน';
+          document.getElementById('td-' + unitkey).innerHTML = 'ยังไม่ส่ง';
+        }
+      }
+    }
+    
+    xmlhttp.open("GET", "dist/assign/ajax/change.tracking.status.php?key=" + unitkey + "&sts=" + sts, true);
+    xmlhttp.send();
+  }
+
+  function ToggleStudent(idtb) {
+    var x = document.getElementById('hidden' + idtb);
+    if (x.style.display === "none") {
+      x.style.display = "block";
+    } else {
+      x.style.display = "none";
+    }
+  }
+</script>

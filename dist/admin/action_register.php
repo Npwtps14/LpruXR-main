@@ -18,7 +18,7 @@ if($_POST['action'] == 'edit')
  SET subject_id = :subject_id, 
  subject_name = :subject_name,  
  credit = :credit
- WHERE r_id = :r_id
+ WHERE subject_id = :subject_id
  ";
  $statement = $connect->prepare($query);
  $statement->execute($data);

@@ -1,6 +1,5 @@
 <?php
 
-
 if (isset($_POST['saveassign'])) {
 
   $row = $getdata->my_sql_num_row($connect, "assignment", "`topic`='" . $_POST['topic'] . "' AND `register_id`='" . $_POST['s_group'] . "' ");
@@ -22,11 +21,11 @@ if (isset($_POST['saveassign'])) {
 ?>
 
 <section class="section has-background-grey-light">
-  <div class="column  table-wrapper-scroll-y my-custom-scrollbar ">
-    <div class="panel panel-default">
+  <div class="column is-fullheight  ">
+    <div class="panel">
       <div class="panel-body">
         <div class="table-responsive">
-          <table id="assign_data" class="table is-fullwidth is-scrollable  is-bordered is-striped   ">
+          <table  id="assign_data" class="table ">
             <thead>
               <tr>
                 <th>ID</th>
@@ -34,7 +33,6 @@ if (isset($_POST['saveassign'])) {
                 <th>Subject</th>
                 <th>Group</th>
                 <th>Topic</th>
-                <th>Description</th>
                 <th>Deadline</th>
               </tr>
             </thead>
@@ -61,9 +59,11 @@ if (isset($_POST['saveassign'])) {
                 <select name="term" id="term">
                   <option require></option>
                   <?php
+                  echo "<option value='1/63' selected > 1/63 </option>";  // displaying data in option menu
+
                   $records = $getdata->my_sql_select($connect, "DISTINCT term", "register", "user_id =" .$users->ID." ");
                   while ($dataregister = mysqli_fetch_object($records)) {
-                    echo "<option value='" . $dataregister->term . "'>" . $dataregister->term . "</option>";  // displaying data in option menu
+                    echo "<option  value='" . $dataregister->term . "'>" . $dataregister->term . "</option>";  // displaying data in option menu
                   }
                   
                   ?>
@@ -79,6 +79,13 @@ if (isset($_POST['saveassign'])) {
               <div class="select is-fullwidth">
                 <select name="subject" id="subject">
                   <option require></option>
+                  <?php
+                  $records = $getdata->my_sql_select($connect, null, "subject", "user_id =" .$users->ID."  ");
+                  while ($datasubject = mysqli_fetch_object($records)) {
+                    echo "<option  value='" . $datasubject->subject_id . "'>" . $datasubject->subject_name . "</option>";  // displaying data in option menu
+                  }
+                  
+                  ?>
                 </select>
               </div>
             </div>
@@ -102,12 +109,6 @@ if (isset($_POST['saveassign'])) {
               </div>
             </div>
             <div class="field">
-              <label class="label level-left">Description</label>
-              <div class="control">
-                <textarea name="desc" class="textarea" placeholder="รายละเอียดงาน"></textarea>
-              </div>
-            </div>
-            <div class="field">
               <label class="label level-left">Deadline</label>
               <div class="control">
                 <input name="deadline" class="input" type="date">
@@ -127,6 +128,8 @@ if (isset($_POST['saveassign'])) {
     </div>
   </div>
 </div>
+
+
 
 
 <script type="text/javascript" language="javascript">
@@ -223,8 +226,7 @@ if (isset($_POST['saveassign'])) {
           [2, 'subject_name'],
           [3, 's_group'],
           [4, 'topic'],
-          [5, 'description'],
-          [6, 'deadline']
+          [5, 'deadline']
         ]
       },
       restoreButton: false,
