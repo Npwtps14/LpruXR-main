@@ -26,7 +26,15 @@
     </div>
     <div class="level">
       <div class="level-right">
-        <div class="level-item">        
+        <div class="level-item"> 
+          
+          <p class=" is-bold label" >
+          <?php
+          error_reporting(0);
+          $getdata->my_sql_query($connect, null, "user", "ID=" . $_SESSION['user_id'] . ".ID=" . $_SESSION['Username'] . " ");
+          echo $_SESSION['Username'];
+          ?>      
+        </p> 
         </div>
       </div>
     </div>

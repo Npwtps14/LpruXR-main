@@ -27,8 +27,11 @@ session_start();
                       }
 
                       if ($_SESSION["Userlevel"]=="Teacher"){  //ถ้าเป็น member ให้กระโดดไปหน้า assignment.php
-                      
-                      Header("Location: ../../");
+
+                        // Header("Location: ../../");
+                      //  echo $_SESSION["Fullname"] = $row["Fullname"];
+                      // echo $row = mysqli_fetch_array($result);
+                      Header("Location: ../../test.php");
                       }
 
                   }else{

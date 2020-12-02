@@ -1,3 +1,4 @@
+<?php error_reporting(E_ALL ^ E_WARNING);?>
 <aside class="aside is-placed-left is-expanded">
         <div class="aside-tools">
           <div class="aside-tools-label">
@@ -77,9 +78,8 @@
 
               
                
-              
-    
-              <?php if(isset($users->Userlevel)){?>                                        
+             
+              <?php if(isset($users->Userlevel)){?>                                     
                 <a href="dist/logout.php" class="has-icon">
                   <center><button class="button is-danger is-rounded">Logout</button></center>
                 </a>

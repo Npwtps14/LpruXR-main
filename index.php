@@ -1,6 +1,6 @@
 <?php session_start(); ?>
 <!DOCTYPE html>
-<html lang="en" class="has-aside-left has-aside-right has-aside-mobile-transition  has-aside-expanded">
+<html lang="en" class="has-aside-left has-aside-right has-aside-mobile-transition  has-aside-expanded  has-background-grey-light">
 <?php 
 include("dist/teacher/connect.core.php");
 $getdata = new clear_db();

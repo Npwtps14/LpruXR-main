@@ -92,6 +92,7 @@ if (!$_SESSION["UserID"]) {
           </div>
         </div>
     </div>
+    
     </section>
     <section class="hero is-hero-bar">
       <div class="hero-body">

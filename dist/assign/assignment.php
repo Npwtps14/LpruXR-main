@@ -20,7 +20,10 @@ if (isset($_POST['saveassign'])) {
 }
 ?>
 
-<section class="section has-background-grey-light">
+<section class=" has-background-grey-light">
+<div class=" level-right">
+       <button class=" button is-link level-right" type="button" data-toggle="modal" data-target="#assignModal">มอบหมายงาน</button>
+  </div>
   <div class="column is-fullheight  ">
     <div class="panel">
       <div class="panel-body">
