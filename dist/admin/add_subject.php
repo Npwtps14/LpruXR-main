@@ -18,9 +18,7 @@
                     <div class="field">
                         <p class="control is-expanded has-icons-left has-icons-right">
                             <input required class="input" type="text" name="credit" placeholder="Credit">
-                            <!-- <select name="credit">
-                            <option>3</option>
-                            </select> -->
+                         
                         </p>
                     </div>
                 </div>

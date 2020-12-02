@@ -1,18 +1,18 @@
 <?php
 
 
-  if (isset($_POST['saveassign'] )) {
- 
-  $row = $getdata->my_sql_num_row($connect,"assignment","`topic`='".$_POST['topic']."' AND `register_id`='".$_POST['s_group']."' ");
+if (isset($_POST['saveassign'])) {
 
-  if($row <= 0){
-  $getdata->my_sql_insert($connect,"assignment","
-  `register_id`='".$_POST['s_group']."'
-  ,`topic`='".$_POST['topic']."'
-  ,`description`='".$_POST['desc']."'
-  ,`deadline`='".$_POST['deadline']."' 
-  " ); 
-  }else{
+  $row = $getdata->my_sql_num_row($connect, "assignment", "`topic`='" . $_POST['topic'] . "' AND `register_id`='" . $_POST['s_group'] . "' ");
+
+  if ($row <= 0) {
+    $getdata->my_sql_insert($connect, "assignment", "
+  `register_id`='" . $_POST['s_group'] . "'
+  ,`topic`='" . $_POST['topic'] . "'
+  ,`description`='" . $_POST['desc'] . "'
+  ,`deadline`='" . $_POST['deadline'] . "' 
+  ");
+  } else {
     echo "<script>";
     echo "alert(' ข้อมูลซ้ำ  !');";
     echo "window.history.back();";
@@ -22,7 +22,7 @@
 ?>
 
 <section class="section has-background-grey-light">
-<div class="column  table-wrapper-scroll-y my-custom-scrollbar ">
+  <div class="column  table-wrapper-scroll-y my-custom-scrollbar ">
     <div class="panel panel-default">
       <div class="panel-body">
         <div class="table-responsive">
@@ -35,7 +35,7 @@
                 <th>Group</th>
                 <th>Topic</th>
                 <th>Description</th>
-                <th>Deadline</th>              
+                <th>Deadline</th>
               </tr>
             </thead>
             <tbody></tbody>
@@ -61,12 +61,15 @@
                 <select name="term" id="term">
                   <option require></option>
                   <?php
-                  $records = $getdata->my_sql_select($connect, "DISTINCT term", "register", "user_id =" . $users->ID . "  ");
+                  $records = $getdata->my_sql_select($connect, "DISTINCT term", "register", "user_id =" .$users->ID." ");
                   while ($dataregister = mysqli_fetch_object($records)) {
                     echo "<option value='" . $dataregister->term . "'>" . $dataregister->term . "</option>";  // displaying data in option menu
                   }
+                  
                   ?>
-                </select>
+                </select> 
+               
+               
               </div>
             </div>
           </div>
@@ -192,48 +195,46 @@
         }
       }
 
-      httpReq.open("GET", "dist/assign/ajax/get.s_group.assign.php?users=<?php echo $users->ID; ?> &term=" + term.value + "&subject="+ this.value, true);
+      httpReq.open("GET", "dist/assign/ajax/get.s_group.assign.php?users=<?php echo $users->ID; ?> &term=" + term.value + "&subject=" + this.value, true);
       httpReq.send();
 
     });
 
   })();
-  
-  var dataTable = $('#assign_data').DataTable({
-  "processing" : true,
-  "serverSide" : true,
-  "order" : [],
-  "ajax" : {
-   url:"dist/assign/fetch_assignment.php",
-   type:"POST"
-  }
-});
 
-$('#assign_data').on('draw.dt', function(){
- $('#assign_data').Tabledit({
-  url:'dist/assign/action_assignment.php',
-  dataType:'json',
-  columns:{
-   identifier : [0, 'id'],
-   editable:[
-     [1, 'term'],
-     [2, 'subject_name'], 
-     [3, 's_group'],
-     [4, 'topic'], 
-     [5, 'description'],
-     [6, 'deadline'] ]
-  },
-  restoreButton:false,
-  onSuccess:function(data, textStatus, jqXHR)
-  {
-   if(data.action == 'delete')
-   {
-    // url:'dist/assign/action_assignment.php',
-    $('#' + data.id).remove();
-    $('#assign_data').DataTable().ajax.reload();
-   }
-  }
- });
-});
- 
+  var dataTable = $('#assign_data').DataTable({
+    "processing": true,
+    "serverSide": true,
+    "order": [],
+    "ajax": {
+      url: "dist/assign/fetch_assignment.php",
+      type: "POST"
+    }
+  });
+
+  $('#assign_data').on('draw.dt', function() {
+    $('#assign_data').Tabledit({
+      url: 'dist/assign/action_assignment.php',
+      dataType: 'json',
+      columns: {
+        identifier: [0, 'id'],
+        editable: [
+          [1, 'term'],
+          [2, 'subject_name'],
+          [3, 's_group'],
+          [4, 'topic'],
+          [5, 'description'],
+          [6, 'deadline']
+        ]
+      },
+      restoreButton: false,
+      onSuccess: function(data, textStatus, jqXHR) {
+        if (data.action == 'delete') {
+          // url:'dist/assign/action_assignment.php',
+          $('#' + data.id).remove();
+          $('#assign_data').DataTable().ajax.reload();
+        }
+      }
+    });
+  });
 </script>

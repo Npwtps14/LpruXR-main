@@ -18,6 +18,8 @@
                <div class="level-item">
                     <?php if(@$pageid->cases === "assignment" ){ ?>
                       <button class="btn btn-primary btn-sm" type="button" data-toggle="modal" data-target="#assignModal">มอบหมายงาน</button>
+                    <?php }else if(@$pageid->cases === "assignmentStatus"){ ?>
+                      <button class="btn btn-primary btn-sm" type="button" data-toggle="modal" data-target="#assignStatusModal">ค้นหางาน</button>
                     <?php } ?>
                </div>
              </div>

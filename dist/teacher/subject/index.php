@@ -7,6 +7,7 @@ $getdata = new clear_db();
 $connect = $getdata->connect();
 
 $subject = $getdata->my_sql_select($connect,null,"subject",null);
+
 ?>
 <div class="form-group">
   <select class="form-control " data-width="100%" id="subject_id" name="subject_id" data-container="body">
