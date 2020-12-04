@@ -143,11 +143,12 @@
                     identifier: [0, 'id'],
                     editable: [
                         [1, 'student_id'],
-                        [2, 'student_name'],
-                        [3, 'birthday'],
-                        [4, 'address'],
-                        [5, 'email'],
-                        [6, 'status','{"exist":"exist","expire":"expire"}']
+                        [2, 's_group'],
+                        [3, 'student_name'],
+                        [4, 'birthday'],
+                        [5, 'address'],
+                        [6, 'email'],
+                        [7, 'status','{"exist":"exist","expire":"expire"}']
                     ]
                 },
                 restoreButton: false,

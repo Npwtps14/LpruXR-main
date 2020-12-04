@@ -14,8 +14,7 @@ if($_POST['action'] == 'edit')
   ':id'    => $_POST['id']
  );
 
- $query = "
- UPDATE subject 
+ $query = "UPDATE subject 
  SET subject_id = :subject_id, 
  subject_name = :subject_name,  
  credit = :credit

@@ -2,8 +2,10 @@
 <aside class="aside is-placed-left is-expanded">
         <div class="aside-tools">
           <div class="aside-tools-label">
-            <span><b>Lpru</b>X</span>
+            <span><b>Lpru</b>X
+          </span>
           </div>
+          <br>
         </div>
         <div class="menu is-menu-main">
           <p class="menu-label">General</p>
@@ -14,12 +16,12 @@
                 <span class="menu-item-label">ติดตามงาน</span>
               </a>
             </li>
-            <li>
+            <!-- <li>
               <a href="?page=allAssign" class="has-icon">
                 <span class="icon"><i class="mdi mdi-desktop-mac"></i></span>
                 <span class="menu-item-label">สติรายงานการมอบหมาย</span>
               </a>
-            </li>
+            </li> -->
           </ul>
   <?php if(@$users->Userlevel === "Admin"){ ?>
 <p class="menu-label">Management</p>
@@ -83,6 +85,7 @@
                 <a href="dist/logout.php" class="has-icon">
                   <center><button class="button is-danger is-rounded">Logout</button></center>
                 </a>
+                
               <?php }else{ ?>
                 <a href="dist/login/login.php" class="has-icon">
                   <center><button class="button is-success ">Login</button></center>

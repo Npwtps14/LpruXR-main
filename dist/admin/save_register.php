@@ -12,7 +12,7 @@ if (!$conn) {
   die("Connection failed: " . mysqli_connect_error());
 }
 if($_POST['s_group'] !="" &&  
-$_POST['term'] !="" &&  
+$_POST['term'] !="" && 
 $_POST['subject_id'] !="" && 
 $_POST['user_id'] !="" ){
 
@@ -21,12 +21,11 @@ $_POST['user_id'] !="" ){
   $sql = "INSERT INTO register 
   SET r_id = '".$rid."',
   s_group= '".$_POST['s_group']."',
-  term= '".$_POST['term']."',
-  subject_id= '".$_POST['subject_id']."',
-  user_id= '".$_POST['user_id']."'
+  term = '".$_POST['term']."',
+  subject_id = '".$_POST['subject_id']."',
+  user_id = '".$_POST['user_id']."'
 
-  ON DUPLICATE KEY UPDATE 
-  s_group= '".$_POST['s_group']."',
+  ON DUPLICATE KEY UPDATE s_group= '".$_POST['s_group']."',
   term= '".$_POST['term']."',
   subject_id= '".$_POST['subject_id']."',
   user_id= '".$_POST['user_id']."' "; 

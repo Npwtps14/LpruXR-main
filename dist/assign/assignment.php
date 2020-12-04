@@ -13,7 +13,7 @@ if (isset($_POST['saveassign'])) {
   ");
   } else {
     echo "<script>";
-    echo "alert(' ข้อมูลซ้ำ  !');";
+    echo "alert(' ข้อมูลซ้ำ !');";
     echo "window.history.back();";
     echo "</script>";
   }
@@ -21,9 +21,11 @@ if (isset($_POST['saveassign'])) {
 ?>
 
 <section class=" has-background-grey-light">
-<div class=" level-right">
-       <button class=" button is-link level-right" type="button" data-toggle="modal" data-target="#assignModal">มอบหมายงาน</button>
-  </div>
+<div class=" column is-2 is-offset-10 has-background-grey-light level-right ">
+        <button class=" button is-link" type="button" data-toggle="modal" data-target="#assignModal">มอบหมายงาน</button>
+</div>
+
+
   <div class="column is-fullheight  ">
     <div class="panel">
       <div class="panel-body">
@@ -34,8 +36,9 @@ if (isset($_POST['saveassign'])) {
                 <th>ID</th>
                 <th>Term</th>
                 <th>Subject</th>
-                <th>Group</th>
                 <th>Topic</th>
+                <th>description</th>
+                <th>Group</th>        
                 <th>Deadline</th>
               </tr>
             </thead>
@@ -62,7 +65,7 @@ if (isset($_POST['saveassign'])) {
                 <select name="term" id="term">
                   <option require></option>
                   <?php
-                  echo "<option value='1/63' selected > 1/63 </option>";  // displaying data in option menu
+                  echo "<option value='1/63' selected > 1/63 </option>";  
 
                   $records = $getdata->my_sql_select($connect, "DISTINCT term", "register", "user_id =" .$users->ID." ");
                   while ($dataregister = mysqli_fetch_object($records)) {
@@ -82,13 +85,6 @@ if (isset($_POST['saveassign'])) {
               <div class="select is-fullwidth">
                 <select name="subject" id="subject">
                   <option require></option>
-                  <?php
-                  $records = $getdata->my_sql_select($connect, null, "subject", "user_id =" .$users->ID."  ");
-                  while ($datasubject = mysqli_fetch_object($records)) {
-                    echo "<option  value='" . $datasubject->subject_id . "'>" . $datasubject->subject_name . "</option>";  // displaying data in option menu
-                  }
-                  
-                  ?>
                 </select>
               </div>
             </div>
@@ -98,7 +94,7 @@ if (isset($_POST['saveassign'])) {
             <div class="control">
               <div class="select is-fullwidth">
                 <select name="s_group" id="s_group">
-                  <option require></option>
+                  <option required></option>
                 </select>
               </div>
             </div>
@@ -108,7 +104,14 @@ if (isset($_POST['saveassign'])) {
             <div class="field">
               <label class="label level-left">Topic</label>
               <div class="control">
-                <input name="topic" class="input" type="text">
+                <input require name="topic" class="input" type="text">
+              </div>
+            </div>
+            <div class="field">
+              <label class="label level-left">description</label>
+              <div class="control">
+                
+                <textarea require name="desc" spellcheck="true" class="input " cols="30" rows="5" type="text"> </textarea>
               </div>
             </div>
             <div class="field">
@@ -124,7 +127,7 @@ if (isset($_POST['saveassign'])) {
                   <button type="submit" name="saveassign" class="button is-success">Submit</button>
                 </div>
                 <div class="control">
-                  <button type="close" class="button is-link is-light">Cancel</button>
+                  <button type="button" data-dismiss="modal" class="button is-link is-light">Cancel</button>
                 </div>
               </div>
       </form>
@@ -142,7 +145,7 @@ if (isset($_POST['saveassign'])) {
     var subject = document.getElementById('subject');
     var s_group = document.getElementById('s_group');
 
-    term.addEventListener("change", function(event) {
+    term.addEventListener("mouseout", function(event) {
       event.preventDefault();
 
       //console.log(this.value); 
@@ -227,9 +230,10 @@ if (isset($_POST['saveassign'])) {
         editable: [
           [1, 'term'],
           [2, 'subject_name'],
-          [3, 's_group'],
-          [4, 'topic'],
-          [5, 'deadline']
+          [3, 'topic'],
+          [4, 'description'],
+          [5, 's_group'],
+          [6, 'deadline']
         ]
       },
       restoreButton: false,

@@ -48,7 +48,7 @@ $data = array();
 foreach($result as $row)
 {
  $sub_array = array();
-//  $sub_array[] = $row['id'];
+ $sub_array[] = $row['id'];
  $sub_array[] = $row['subject_id'];
  $sub_array[] = $row['subject_name'];
  $sub_array[] = $row['credit'];

@@ -108,12 +108,6 @@
 
 <script type="text/javascript" language="javascript">
   var map = {};
-  // $('select option').each(function() {
-  //   if (map[this.value]) {
-  //     $(this).remove()
-  //   }
-  //   map[this.value] = true;
-  // })
 
   var dataTable = $('#register_data').DataTable({
     "processing": true,
@@ -137,14 +131,7 @@
     ]
   });
 
-  $('#register_data').on('click', 'a.editor_remove', function(e) {
-    e.preventDefault();
-    editor.remove($(this).closest('tr'), {
-      title: 'Delete record',
-      message: 'Are you sure you wish to remove this record?',
-      buttons: 'Delete'
-    });
-  });
+  
 
   $('#register_data').on('draw.dt', function() {
     $('#register_data').Tabledit({
@@ -161,7 +148,9 @@
           [6, 'Fullname'],
 
         ]
-      },
+
+      }
+      ,
       restoreButton: false,
       onSuccess: function(data, textStatus, jqXHR) {
         if (data.action == 'delete') {

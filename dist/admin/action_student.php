@@ -9,6 +9,7 @@ if($_POST['action'] == 'edit')
  $data = array(
   ':student_id'  => $_POST['student_id'],
   ':student_name'  => $_POST['student_name'],
+  ':s_group'  => $_POST['s_group'],
   ':birthday'   => $_POST['birthday'],
   ':address'   => $_POST['address'],
   ':email'   => $_POST['email'],
@@ -16,9 +17,10 @@ if($_POST['action'] == 'edit')
   ':id'    => $_POST['id']
  );
 
- $query = " UPDATE student 
+ $query = "UPDATE student 
  SET student_id = :student_id, 
  student_name = :student_name,
+ s_group = :s_group, 
  birthday = :birthday ,
  address = :address ,
  email = :email,

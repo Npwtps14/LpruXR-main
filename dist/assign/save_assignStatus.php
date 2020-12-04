@@ -12,18 +12,13 @@ if (!$conn) {
   die("Connection failed: " . mysqli_connect_error());
 }
 
-$sql = "INSERT INTO register (
-  s_group,
-  term,
-  subject_id,
-  T_ID)
- VALUES ('$_POST[s_group]', 
-   '$_POST[term]', 
-   '$_POST[subject_id]', 
-   '$_POST[T_ID]')";
 
-if (mysqli_query($conn, $sql)) {
-    echo "<meta http-equiv='refresh' content='2;url=add_register.php' />";
+$sql =  "UPDATE assignment SET 
+			description = '".$_POST["descEdit"]."'
+			WHERE id "; 
+
+if (mysqli_query($conn,$sql)) {
+    echo "<meta http-equiv='refresh' content='2;url=http://localhost/LpruXR-main/index.php?page=assignmentStatus' />";
 } else {
   echo "Error: " . $sql . "<br>" . mysqli_error($conn);
 }

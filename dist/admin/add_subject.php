@@ -51,6 +51,7 @@
                         <table id="subj_data" class="table is-fullwidth is-scrollable  is-bordered is-striped   ">
                             <thead>
                                 <tr>
+                                <th>ID</th>
                                     <th>Subject ID</th>
                                     <th>Subject name</th>
                                     <th>Credit</th>

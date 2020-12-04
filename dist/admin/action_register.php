@@ -7,18 +7,18 @@ include('../connect/database_connection.php');
 if($_POST['action'] == 'edit')
 {
  $data = array(
+  ':s_group'  => $_POST['s_group'],
+  ':term'  => $_POST['term'],
   ':subject_id'  => $_POST['subject_id'],
-  ':subject_name'  => $_POST['subject_name'],
-  ':credit'  => $_POST['credit'],
+  ':user_id'  => $_POST['user_id'],
   ':r_id'    => $_POST['r_id']
  );
 
- $query = "
- UPDATE subject 
- SET subject_id = :subject_id, 
- subject_name = :subject_name,  
- credit = :credit
- WHERE subject_id = :subject_id
+ $query = "UPDATE register 
+ SET s_group = :s_group, 
+ term = :term,  
+ subject_id = :subject_id,
+ WHERE r_id = :r_id
  ";
  $statement = $connect->prepare($query);
  $statement->execute($data);
