@@ -59,7 +59,7 @@
                         <nav class="level">
                             <div class="level-item has-text-centered">
                                 <div>
-                                    <a href="index.php">กลับหน้าหลัก</a>
+                                    <a href="../../">กลับหน้าหลัก</a>
                                 </div>
                             </div>
                             <div class="level-item has-text-centered">
