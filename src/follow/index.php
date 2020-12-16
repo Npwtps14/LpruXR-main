@@ -10,8 +10,7 @@
     </div>
     <div class="level">
       <div class="level-right">
-        <div class="level-item">
-          
+        <div class="level-item">  
             <p class=" has-text-light is-bold label"> 
               <?php
               error_reporting(0);
@@ -19,8 +18,7 @@
               echo $_SESSION['Username'];
               echo "<br>";
               ?>
-            </p>
-         
+            </p>   
         </div>
         <br>
        
@@ -34,7 +32,6 @@
       </div>
     </div>
 </section>
-<section class="section  has-background-success">
 <?php
 // session_start(); //assignStatusModal
 ?>
@@ -71,7 +68,6 @@
                 </tr>
                 <tr>
                     <td colspan="7" valign="middle">
-                        
                     <div class="card has-background-grey">               
                     <p class="label border level-left has-background-light">
                       Description
@@ -84,8 +80,6 @@
                         <div class=" has-background-grey-dark">
                             <p class=" has-text-grey-dark">.</p>
                         </div>
-
-
                         <table class="table s-bordered is-striped is-narrow is-hoverable is-fullwidth" width="100%" id="hidden<?php echo $rowstatus->id; ?>" style="display: none;">
                             <tbody>
                                 <?php
@@ -124,9 +118,7 @@
             <?php } ?>
         <tbody>
     </table>
-</section>
-
-
+<br><br><br>
 </script>
 
 <script language="javascript">

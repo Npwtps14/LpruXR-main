@@ -1,3 +1,6 @@
+<?php
+error_reporting(0);
+?>
 <meta charset="utf-8">
 <?php
 $servername = "localhost";
@@ -28,10 +31,8 @@ $conn = mysqli_connect($servername, $username, $password, $dbname);
 	
         $sql = "INSERT INTO student (id, student_id,s_group ,student_name ,birthday ,address ,email ,status )
 VALUES (NULL, '$StdID','$_POST[student_id]', '$_POST[student_name]', '$_POST[birthday]', '$_POST[address]', '$_POST[email]',  '$_POST[status]')";
-
-
-           
-	$result = mysqli_query($conn, $sql) or die ("Error in query: $sql " . mysqli_connect_error());
+     
+	    $result = mysqli_query($conn, $sql) or die ("Error in query: $sql " . mysqli_connect_error());
 
 }
 	mysqli_close($conn);

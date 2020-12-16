@@ -140,13 +140,10 @@
       columns: {
         identifier: [0, 'r_id'],
         editable: [
-          [1, 'r_id'],
+         
+          [1, 'term'],
           [2, 's_group'],
-          [3, 'term'],
-          [4, 'subject_id'],
-          [5, 'subject_name'],
-          [6, 'Fullname'],
-
+     
         ]
 
       }

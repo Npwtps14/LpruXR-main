@@ -55,8 +55,8 @@
                     <td width="10%"><?php echo $rowStudent->student_id; ?></td>
                     <td width="70%"><?php echo $rowStudent->student_name; ?></td>
                     <td width="10%" id="td-<?php echo $rowStudent->student_id . '-' . $rowstatus->id; ?>">
-                      <?php if (@$checkStatus->id != "") {
-                        echo "ส่งแล้ว";
+                     <?php if (@$checkStatus->id != "") {
+                        echo " ส่งแล้ว";
                       } else {
                         echo "ยังไม่ส่ง";
                       }

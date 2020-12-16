@@ -84,7 +84,7 @@ if (isset($_POST['saveassign'])) {
             <div class="control">
               <div class="select is-fullwidth">
                 <select name="subject" id="subject">
-                  <option require></option>
+                  <option require ></option>
                 </select>
               </div>
             </div>
@@ -94,7 +94,7 @@ if (isset($_POST['saveassign'])) {
             <div class="control">
               <div class="select is-fullwidth">
                 <select name="s_group" id="s_group">
-                  <option required></option>
+                  <option require></option>
                 </select>
               </div>
             </div>
@@ -104,14 +104,14 @@ if (isset($_POST['saveassign'])) {
             <div class="field">
               <label class="label level-left">Topic</label>
               <div class="control">
-                <input require name="topic" class="input" type="text">
+                <input required name="topic" class="input" type="text">
               </div>
             </div>
             <div class="field">
               <label class="label level-left">description</label>
               <div class="control">
                 
-                <textarea require name="desc" spellcheck="true" class="input " cols="30" rows="5" type="text"> </textarea>
+                <textarea required name="desc" spellcheck="true" class="input " cols="30" rows="5" type="text"> </textarea>
               </div>
             </div>
             <div class="field">

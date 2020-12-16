@@ -1,3 +1,4 @@
+<?php error_reporting(E_ALL ^ E_WARNING);?>
  <section class="section has-background-grey-light">
         <form action="dist/admin/save_student.php" method="post">
             <div class="field is-horizontal">
