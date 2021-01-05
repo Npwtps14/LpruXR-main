@@ -130,6 +130,7 @@ if (isset($_POST['saveassign'])) {
                   <button type="button" data-dismiss="modal" class="button is-link is-light">Cancel</button>
                 </div>
               </div>
+            </div>
       </form>
     </div>
   </div>

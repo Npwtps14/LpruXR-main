@@ -25,12 +25,12 @@
                         <form action="checklogin.php" method="POST" class="column is-half">
                             <div class="field">
                                 <div class="control">
-                                    <input  id="Username" required name="Username" class="input is-medium is-rounded" type="text" placeholder="Username" autocomplete="username" required />
+                                    <input  id="Username" required name="Username" class="input is-medium is-rounded" type="email" placeholder="Username" autocomplete="username" required maxlength="50" />
                                 </div>
                             </div>
                             <div class="field">
                                 <div class="control">
-                                    <input id="Password"required name="Password" class="input is-medium is-rounded" type="password" placeholder="Password" autocomplete="current-password" required />
+                                    <input id="Password"required name="Password" class="input is-medium is-rounded" type="password" placeholder="Password" autocomplete="current-password" maxlength="30" />
                                 </div>
                             </div>
                             <br />
