@@ -7,7 +7,7 @@
             <div class="field-body">
                 <div class="field">
                     <p class="control is-expanded has-icons-left">
-                        <input required class="input" type="text" name="Username" placeholder="Username">
+                        <input required class="input" type="email" name="Username" placeholder="Username">
                         <span class="icon is-small is-left">
                             <i class="fas fa-user"></i>
                         </span>

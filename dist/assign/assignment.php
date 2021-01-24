@@ -11,10 +11,14 @@ if (isset($_POST['saveassign'])) {
   ,`description`='" . $_POST['desc'] . "'
   ,`deadline`='" . $_POST['deadline'] . "' 
   ");
+  echo "<script>";
+  echo "alert(' มอบหมายงานสำเร็จ !');";
+  echo "window.location = 'http://localhost/LpruXR-main/?page=assignment'; ";
+  echo "</script>";
   } else {
     echo "<script>";
     echo "alert(' ข้อมูลซ้ำ !');";
-    echo "window.history.back();";
+    echo "window.location = 'http://localhost/LpruXR-main/?page=assignment'; ";
     echo "</script>";
   }
 }
@@ -104,20 +108,20 @@ if (isset($_POST['saveassign'])) {
             <div class="field">
               <label class="label level-left">Topic</label>
               <div class="control">
-                <input required name="topic" class="input" type="text">
+                <input required  name="topic" class="input" type="text"  maxlength="255">
               </div>
             </div>
             <div class="field">
               <label class="label level-left">description</label>
               <div class="control">
                 
-                <textarea required name="desc" spellcheck="true" class="input " cols="30" rows="5" type="text"> </textarea>
+                <textarea required name="desc" spellcheck="true" class="input " cols="30" rows="5" type="text"  maxlength="255">  </textarea>
               </div>
             </div>
             <div class="field">
               <label class="label level-left">Deadline</label>
               <div class="control">
-                <input name="deadline" class="input" type="date">
+                <input required   name="deadline" class="input" type="date">
               </div>
             </div>
 

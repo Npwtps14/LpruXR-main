@@ -17,7 +17,7 @@
                     </div>
                     <div class="field">
                         <p class="control is-expanded has-icons-left has-icons-right">
-                            <input required class="input" type="text" name="credit" placeholder="Credit">
+                            <input required class="input" type="text" name="credit" oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');"  placeholder="Credit">
                          
                         </p>
                     </div>

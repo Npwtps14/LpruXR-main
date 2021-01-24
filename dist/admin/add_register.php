@@ -7,13 +7,13 @@
       <div class="field-body">
         <div class="field is-narrow">
           <div class="control">
-            <input required class="input" require type="text" name="term" placeholder="Term">
+            <input required class="input" require type="text" name="term" placeholder="Term" oninput="this.value = this.value.replace(/[^0-9 /  .]/g, '').replace(/(\..*)\./g, '$1');">
           </div>
         </div>
         <div class="field is-narrow">
           <div class="control">
             <div class="select is-fullwidth">
-              <select name="s_group">
+              <select required name="s_group">
                 <option value="">Group</option>
                 <?php
                  $student = $getdata->my_sql_select($connect, null, "student", "1 GROUP BY s_group");
@@ -33,7 +33,7 @@
             </div>
             <div class="select is-fullwidth">
               
-              <select name="subject_id">
+              <select required name="subject_id">
                 <option value="" selected>Subject</option>
                 <?php
                 $records = $getdata->my_sql_select($connect, null, "subject", null);
@@ -49,7 +49,7 @@
         <div class="field is-narrow">
           <div class="control">
             <div class="select is-fullwidth">
-              <select name="user_id">
+              <select required name="user_id">
                 <option value="">Teacher</option>
                 <?php
                 $records = $getdata->my_sql_select($connect, null, "user", null);
